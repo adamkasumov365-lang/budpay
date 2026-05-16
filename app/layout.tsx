@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { DashboardProvider } from '@/lib/dashboard-context'
+import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'BUDPAY - Payment Processing Dashboard',
+  title: 'BUDPAY PRO - Payment Processing Dashboard',
   description: 'Premium fintech payment processing platform',
   generator: 'v0.app',
   icons: {
@@ -37,7 +39,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark bg-background">
       <body className="font-sans antialiased">
-        {children}
+        <DashboardProvider>
+          {children}
+          <Toaster />
+        </DashboardProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

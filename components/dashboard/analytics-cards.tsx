@@ -2,43 +2,47 @@
 
 import { TrendingUp, TrendingDown, DollarSign, CreditCard, Users, Activity } from "lucide-react"
 import { cn } from "@/lib/utils"
-
-const stats = [
-  {
-    title: "Total Volume",
-    value: "$2,847,392",
-    change: "+12.5%",
-    trend: "up",
-    icon: DollarSign,
-    description: "vs last month",
-  },
-  {
-    title: "Transactions",
-    value: "48,392",
-    change: "+8.2%",
-    trend: "up",
-    icon: CreditCard,
-    description: "vs last month",
-  },
-  {
-    title: "Active Merchants",
-    value: "1,284",
-    change: "+23.1%",
-    trend: "up",
-    icon: Users,
-    description: "vs last month",
-  },
-  {
-    title: "Success Rate",
-    value: "99.8%",
-    change: "-0.1%",
-    trend: "down",
-    icon: Activity,
-    description: "vs last month",
-  },
-]
+import { useDashboard } from "@/lib/dashboard-context"
+import { formatCurrency } from "@/lib/mock-data"
 
 export function AnalyticsCards() {
+  const { analytics } = useDashboard()
+
+  const stats = [
+    {
+      title: "Total Volume",
+      value: formatCurrency(analytics.totalVolume),
+      change: `+${analytics.totalVolumeChange}%`,
+      trend: "up" as const,
+      icon: DollarSign,
+      description: "vs last month",
+    },
+    {
+      title: "Transactions",
+      value: analytics.transactions.toLocaleString(),
+      change: `+${analytics.transactionsChange}%`,
+      trend: "up" as const,
+      icon: CreditCard,
+      description: "vs last month",
+    },
+    {
+      title: "Active Merchants",
+      value: analytics.activeMerchants.toLocaleString(),
+      change: `+${analytics.activeMerchantsChange}%`,
+      trend: "up" as const,
+      icon: Users,
+      description: "vs last month",
+    },
+    {
+      title: "Success Rate",
+      value: `${analytics.successRate}%`,
+      change: `+${analytics.successRateChange}%`,
+      trend: "up" as const,
+      icon: Activity,
+      description: "vs last month",
+    },
+  ]
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       {stats.map((stat) => (
