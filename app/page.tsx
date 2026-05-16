@@ -5,6 +5,7 @@ import { AdminSidebar } from "@/components/dashboard/admin-sidebar"
 import { DashboardHeader } from "@/components/dashboard/header"
 import { AnalyticsCards } from "@/components/dashboard/analytics-cards"
 import { PaymentRequisitesForm } from "@/components/dashboard/payment-requisites-form"
+import { SendPaymentForm } from "@/components/dashboard/send-payment-form"
 import { IncomingRequestsTable } from "@/components/dashboard/incoming-requests-table"
 import { LiveTransactions } from "@/components/dashboard/live-transactions"
 import { MerchantManagement } from "@/components/dashboard/merchant-management"
@@ -63,7 +64,10 @@ export default function DashboardPage() {
             <div>
               <PaymentRequisitesForm />
             </div>
-            <div className="lg:col-span-2">
+            <div>
+              <SendPaymentForm />
+            </div>
+            <div>
               <TransactionStatusWidget />
             </div>
           </div>
@@ -80,7 +84,7 @@ export default function DashboardPage() {
           {/* Footer */}
           <footer className="pt-6 pb-4 border-t border-border">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-              <p>&copy; 2024 BUDPAY. All rights reserved.</p>
+              <p>&copy; 2024 BUDPAY PRO. All rights reserved.</p>
               <div className="flex items-center gap-4">
                 <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
                 <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>

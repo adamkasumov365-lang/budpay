@@ -58,7 +58,7 @@ export function AdminSidebar() {
           </div>
           {!collapsed && (
             <div>
-              <h1 className="text-xl font-bold text-foreground neon-text">BUDPAY</h1>
+              <h1 className="text-xl font-bold text-foreground neon-text">BUDPAY PRO</h1>
               <p className="text-xs text-muted-foreground">Payment Gateway</p>
             </div>
           )}
